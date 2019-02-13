@@ -27,4 +27,4 @@ puts musical02.theaters
 
 puts theater01.performances
 puts theater03.musicals
-Pry.start
+binding.pry
