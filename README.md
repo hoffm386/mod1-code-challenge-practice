@@ -1,6 +1,5 @@
-# Object Relations Practice: Theater Edition
+# Object Relations Practice: Film Festival Edition
 
-Any theater (or should I say *theatre*) geek knows that every performance is a unique, ephemeral snowflake of an experience.  Let's make a system to keep track of all the shows you've seen, and which venues you saw them in.
 
 ## Notes
 
@@ -14,31 +13,32 @@ We've provided you with a console that you can use to test your code. To enter a
 
 ### Basic Class Methods and Properties
 
-#### Build the following instance and class methods for `Musical`
-- `Musical` should initialize with a name and a setting city
-- `Musical` should respond to `Musical#name` and `Musical#setting_city`
-- `Musical` should be able to change its name with an accessor, but not its setting city
-- `Musical` should have a method `Musical.all` that returns all the instances of `Musical`
-- `Musical` should have a method `Musical.all_introductions` that puts out a message of `"Welcome, this is {insert musical name here}, set in {insert city here}"` for each musical
+#### Build the following instance and class methods for `Film`
+- `Film` should initialize with a name and a setting
+- `Film` should respond to `Film#name` and `Film#setting`
+- `Film` should be able to change its name with an accessor, but not its setting
+- `Film` should have a method `Film.all` that returns all the instances of `Film`
+- `Film` should have a method `Film.all_introductions` that puts out a message of `"Welcome, this is {insert film name here}, set in {insert setting here}"` for each film
 
-#### Build the following instance and class methods for `Theater`
-- `Theater` should initialize with a title and city
-- `Theater` should have a method `Theater.all` method which returns all the instances of `Theater`
+#### Build the following instance and class methods for `Festival`
+- `Festival` should initialize with a title and location
+- `Festival` should have a method `Festival.all` method which returns all the instances of `Festival`
 
 ---
 
 ### Associations and Aggregate Methods
-#### `Performance`
-- `Performance` should initialize with a date (string), musical, and theater
-- `Performance` should have methods `Performance#musical` and `Performance#theater` that return the `Musical` instance and `Theater` instance associated to the performance
-- `Performance` should have a `Performance.all` method which returns all the instances of `Performance`
-- `Performance` should have a method `Performance#hometown_setting?` that returns true if the musical is being performed in the same city where it is set.  For example, if Hairspray (set in Baltimore) was performed at the Hippodrome Theatre (in Baltimore), or if Annie (set in NYC) was performed at the Neil Simon Theatre (in NYC), that would be a "hometown setting".  However, if Hairspray was performed at the Neil Simon Theatre, or Annie was performed at the Hippodrome Theatre, that would not be a hometown setting.
+#### `Screening`
+- `Screening` should initialize with a date (string), film, and festival
+- `Screening` should have methods `Screening#film` and `Screening#festival` that return the `Film` instance and `Festival` instance associated to the screening
+- `Screening` should have a `Screening.all` method which returns all the instances of `Screening`
+- `Screening` should have a method `Screening#hometown_setting?` that returns true if the film is being screened in the same place where it is set.  For example, when _If Beale Street Could Talk_ (set in New York) was screened at the New York Film Festival, that was a "hometown setting".  When _The Favourite_ (set in England) was screened at the New York Film Festival, that was not a hometown setting.
 
-#### `Musical`
-- `Musical` should have a method `Musical#perform_in_theater` that takes a theater (object) and date (string) as arguments and associates the musical to that theater
-- `Musical` should have a method `Musical#performances` should return an array of all that musical's performances
-- `Musical` should have a method `Musical#theaters` that returns an array of all the theaters the musical performs in
+#### `Film`
+- `Film` should have a method `Film.most_festivals` that returns the film (object) that has been screened at the most festivals
+- `Film` should have a method `Film#screen_at_festival` that takes a festival (object) and date (string) as arguments and associates the film to that festival
+- `Film` should have a method `Film#screenings` should return an array of all that film's screenings
+- `Film` should have a method `Film#festivals` that returns an array of all the festivals the film has been screened in
 
-#### `Theater`
-- `Theater` should have a method `Theater#performances` that lists all the performances that have ever been performed in that theater
-- `Theater` should have a method `Theater#musicals` that lists all the musicals that have ever been performed in that theater
+#### `Festival`
+- `Festival` should have a method `Festival#screenings` that lists all the screenings that have ever been shown in that festival
+- `Festival` should have a method `Festival#films` that lists all the films that have ever been screened in that festival
